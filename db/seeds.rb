@@ -29,3 +29,5 @@ answer_qrb = Answer.create!(title: "Yes", correct: true, question_id: question_r
 answer_qrb = Answer.create!(title: "No", correct: false, question_id: question_railsbegin.id)
 answer_qjsb = Answer.create!(title: "Yes", correct: true, question_id: question_javascriptbegin.id)
 answer_qjsb = Answer.create!(title: "No", correct: false, question_id: question_javascriptbegin.id)
+
+result_ivan = Result.create!(test_id: test_rails.id, user_id: user_Ivan.id, ending: true)
