@@ -23,19 +23,11 @@ question_djangobegin = Question.create!(title: 'Django is backend framework?', t
 question_railsbegin = Question.create!(title: 'Rails is backend framework?', test_id: test_django.id)
 question_javascriptbegin = Question.create!(title: 'JavaScript is backend framework?', test_id: test_django.id)
 
-answer_qdb = Answer.create!([
-                              { title: 'Yes', correct: true, question_id: question_djangobegin.id },
-                              { title: 'No', correct: false, question_id: question_djangobegin.id }
-                            ])
+Answer.create!([{ title: 'Yes', correct: true, question_id: question_railsbegin.id },
+                { title: 'No', correct: false, question_id: question_railsbegin.id },
+                { title: 'Yes', correct: true, question_id: question_javascriptbegin.id },
+                { title: 'No', correct: false, question_id: question_javascriptbegin.id },
+                { title: 'Yes', correct: true, question_id: question_djangobegin.id },
+                { title: 'No', correct: false, question_id: question_djangobegin.id }])
 
-answer_qrb = Answer.create!([
-                              { title: 'Yes', correct: true, question_id: question_railsbegin.id },
-                              { title: 'No', correct: false, question_id: question_railsbegin.id }
-                            ])
-
-answer_qjsb = Answer.create!([
-                               { title: 'Yes', correct: true, question_id: question_javascriptbegin.id },
-                               { title: 'No', correct: false, question_id: question_javascriptbegin.id }
-                             ])
-
-result_ivan = Result.create!(test_id: test_rails.id, user_id: user_Ivan.id, ending: true)
+Result.create!({ test_id: test_rails.id, user_id: user_Ivan.id, ending: true })
