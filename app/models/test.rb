@@ -1,13 +1,15 @@
 class Test < ApplicationRecord
-  has_many :results
-  has_many :questions
-  has_many :users, through: :results
   belongs_to :category
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
+  belongs_to :author, class_name: 'User'
 
-  def self.tests_by_category(category)
-    Test.joins('JOIN categories ON categories.id = tests.category_id')
-        .where('categories.title = ?', category)
+  has_many :results, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :users, through: :results
+
+  def self.tests_by_category(category_title)
+    Test.joins(:category)
+        .where(categories: { title: category_title })
         .order(title: :desc)
+        .pluck(:title)
   end
 end
