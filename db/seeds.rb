@@ -7,30 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 categories = Category.create!([
-  {title: 'Rails'},
-  {title: 'Django'},
-  {title: 'JavaScript'}])
+                                { title: 'Rails' },
+                                { title: 'Django' },
+                                { title: 'JavaScript' }
+                              ])
 
 users = User.create!([
-  {username: 'Ivan', password: 453_213},
-  {username: 'Vano', password: 983_532},
-  {username: 'Jack', password: 214_567}])
+                       { username: 'Ivan', password: 453_213 },
+                       { username: 'Vano', password: 983_532 },
+                       { username: 'Jack', password: 214_567 }
+                     ])
 
 tests = Test.create!([
-  {title: 'Rails begin', level: 0, category_id: categories[0].id, author_id: users[0].id},
-  {title: 'Django begin', level: 0, category_id: categories[1].id, author_id:users[0].id},
-  {title: 'JavaScript begin', level: 0, category_id: categories[2].id, author_id:users[0].id}])
+                       { title: 'Rails begin', level: 0, category: categories[0], author: users[0] },
+                       { title: 'Django begin', level: 0, category: categories[1], author: users[0] },
+                       { title: 'JavaScript begin', level: 0, category: categories[2], author: users[0] }
+                     ])
 
 questions = Question.create!([
-  {title: 'Django is backend framework?', test_id: tests[1].id},
-  {title: 'Rails is backend framework?', test_id: tests[0].id},
-  {title: 'JavaScript is backend framework?', test_id: tests[2].id}])
+                               { title: 'Django is backend framework?', test: tests[1] },
+                               { title: 'Rails is backend framework?', test: tests[0] },
+                               { title: 'JavaScript is backend framework?', test: tests[2] }
+                             ])
 
-Answer.create!([{ title: 'Yes', correct: true, question_id: questions[0].id },
-                { title: 'No', correct: false, question_id: questions[0].id },
-                { title: 'Yes', correct: true, question_id: questions[1].id },
-                { title: 'No', correct: false, question_id: questions[1].id },
-                { title: 'Yes', correct: false, question_id: questions[2].id },
-                { title: 'No', correct: true, question_id: questions[2].id }])
+Answer.create!([{ title: 'Yes', correct: true, question: questions[0] },
+                { title: 'No', correct: false, question: questions[0] },
+                { title: 'Yes', correct: true, question: questions[1] },
+                { title: 'No', correct: false, question: questions[1] },
+                { title: 'Yes', correct: false, question: questions[2] },
+                { title: 'No', correct: true, question: questions[2] }])
 
-Result.create!({ test_id: tests[0].id, user_id: users[0].id, ending: true })
+Result.create!({ test: tests[0], user: users[0], ending: true })
