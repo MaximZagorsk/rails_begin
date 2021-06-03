@@ -4,10 +4,4 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
 
   validates :title, presence: true
-  validate :validate_answers
-
-  def validate_answers
-    errors.add(:answers) if answers.count >= 4 && answers.count <= 1
-  end
-  
 end

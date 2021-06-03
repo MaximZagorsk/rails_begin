@@ -7,7 +7,6 @@ class User < ApplicationRecord
   def ending_test_by_level(level)
     Test.joins(:results)
         .where(results: { user_id: id })
-        .where(tests: {level: level})
+        .where(tests: { level: level })
   end
-
 end
