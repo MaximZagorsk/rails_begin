@@ -1,5 +1,4 @@
 class Test < ApplicationRecord
-
   belongs_to :category
   belongs_to :author, class_name: 'User'
 
@@ -16,12 +15,11 @@ class Test < ApplicationRecord
   scope :hard, -> { where(level: 5..) }
   scope :by_category, lambda { |category_title|
     joins(:category)
-    .where(categories: { title: category_title })
-    .order(title: :desc)
+      .where(categories: { title: category_title })
+      .order(title: :desc)
   }
 
   def self.only_title_array_by_categry(category_title)
     by_category(category_title).pluck(:title)
   end
-
 end
